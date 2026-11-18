@@ -1,0 +1,50 @@
+REHBERLİK SİSTEMİ – TELEFON UYGULAMASI (PWA) KURULUMU
+=====================================================
+
+Bu klasör, sistemi telefonun ana ekranına "uygulama" olarak ekleyen ince bir kabuktur. Veriler ve işlemler
+Google Apps Script tarafında kalır; burada yalnızca açılış ekranı ve simgeler bulunur.
+
+1) Apps Script'te sistem hazır olmalı
+   Güncel Code.gs, Index.html ve Panel.html'i yapıştırıp: Dağıt > Dağıtımları yönet > (kalem) > Sürüm: "Yeni sürüm" > Dağıt.
+   Yürütme: "Ben", Erişimi olanlar: "Herkes". Web uygulaması URL'sini kopyalayın ("/exec" ile biter).
+
+2) index.html içindeki APP_URL satırına bu adresi yapıştırın.
+
+3) Bu klasörün TÜM içeriğini (index.html, manifest.json, sw.js, icons klasörü) GitHub Pages deponuza yükleyin,
+   örneğin  rehberlik/  klasörüne. Adres şöyle olur:
+       https://KULLANICIADINIZ.github.io/DEPOADI/rehberlik/
+   (Dosyalar aynı klasörde kalmalıdır. Pages ayarı: Settings > Pages > Branch: main.)
+
+4) WhatsApp mesajlarının bu adrese gitmesi için (ÖNERİLEN):
+   Panele süper yönetici olarak girin > Ayarlar > "Veli bağlantısı" alanına 3. adımdaki adresi yazın > Kaydet.
+   Bundan sonra mesajlardaki bağlantı  https://.../rehberlik/?kod=K7M4QX29  biçiminde olur; veli tıkladığında kod
+   otomatik yazılır ve sistem uygulama kabuğunun içinde açılır. (Bu alan boşsa bağlantı doğrudan Apps Script adresine gider; o da çalışır.)
+
+5) Telefonda adresi açıp ana ekrana ekleyin:
+   - ANDROID (Chrome): menü (⋮) > "Ana ekrana ekle" / "Uygulamayı yükle".
+   - iPHONE (Safari): Paylaş düğmesi > "Ana Ekrana Ekle".
+   Ana ekranda "Rehberlik" simgesi çıkar; tam ekran, adres çubuğu olmadan açılır.
+
+6) Öğretmen / müdür / yönetici için panel kısayolu:
+   - ANDROID: uygulama simgesine uzun basın > "Öğretmen / Müdür / Yönetici Paneli".
+   - iPHONE veya diğer: tarayıcıda  https://.../rehberlik/?page=panel  adresini açıp ana ekrana ekleyin.
+   Veli sayfasındaki "Öğretmen / Okul Müdürü / Yönetici Girişi" bağlantısı da çalışır.
+
+7) (İsteğe bağlı) Android APK/AAB: https://www.pwabuilder.com adresine 3. adımdaki adresi yapıştırın,
+   "Package for stores" > Android seçin. APK'yı gruba doğrudan dağıtabilirsiniz (Play Store şart değil).
+
+WHATSAPP NASIL KULLANILIR?
+ - Panel > "WhatsApp Mesajları": sınıfı ve mesaj türünü seçin, "Listeyi Hazırla" > her satırda "Uygulama" düğmesi.
+   Telefonda WhatsApp uygulaması mesaj yazılı olarak açılır; "Gönder"e basarsınız. Bilgisayarda "Web" düğmesi WhatsApp Web'i açar.
+ - WhatsApp kişisel hesaplardan otomatik toplu gönderime izin vermez; her mesaj tek tıkla açılır, gönderimi siz onaylarsınız.
+
+BİLİNEN SINIRLAR (telefonunuzda mutlaka deneyin):
+ - Bazı tarayıcılarda (özellikle iPhone/Safari) iç içe sayfalarda oturum hatırlama kısıtlanabilir; öğretmen/müdür panelinde her
+   açılışta giriş istenebilir. Bu olursa paneli doğrudan Apps Script adresiyle (…/exec?page=panel) ana ekrana ekleyin.
+ - Sistem internetsiz çalışmaz (veriler Google'dadır). Çevrimdışıyken yalnızca açılış ekranı görünür.
+ - Güncellemeler Apps Script'ten yayınlanınca otomatik yansır; bu klasörü yeniden yüklemek gerekmez (yalnızca APP_URL değişirse).
+ - Uygulama kabuğu güncellenirse (sw.js içindeki önbellek adı değişirse) telefondaki uygulama bir sonraki açılışta kendini yeniler.
+
+GİZLİLİK: Önbelleğe yalnızca açılış ekranı ve simgeler alınır; öğrenci/aile verisi telefonda saklanmaz.
+
+Tasarlayan: Sıraç Aksan
